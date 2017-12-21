@@ -1,37 +1,39 @@
-//
-//  AppDelegate.swift
-//  Radar
-//
-//  Created by Ryan Moran on 12/20/17.
-//  Copyright © 2017 banana. All rights reserved.
-//
-
-import Cocoa
+import AppKit
+import Concourse
+import ConcourseAPI
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
-    let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
-    var mainWindow: NSWindow?
-    
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-        if let button = statusItem.button {
-            button.image = NSImage(named:NSImage.Name("StatusBarButtonImage"))
-        }
-        
-        let menu = NSMenu()
-        let quitMenuItem = NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
-        menu.addItem(quitMenuItem)
-        statusItem.menu = menu
+class AppDelegate: NSObject {
+  var menuController: MenuController!
+  var stateManager: Concourse.StateManager!
+
+  override init() {
+    super.init()
+  }
+}
+
+// MARK: - NSApplicationDelegate
+extension AppDelegate: NSApplicationDelegate {
+  func applicationDidFinishLaunching(_ notification: Notification) {
+    let defaults = Bundle.main.url(forResource: "DefaultPreferences", withExtension: "plist")!
+    let settings = Settings(defaults: UserDefaults.standard, url: defaults)
+
+    var targets: [Concourse.Target] = []
+    for target in settings.targets {
+      targets.append(Concourse.Target(ConcourseAPI.Target(session: URLSession.shared, api: target.api, team: target.team)))
     }
 
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
-    
-    @objc func printQuote(_ sender: Any?) {
-        let quoteText = "Hello"
-        let quoteAuthor = "Me"
-        
-        print("\(quoteText) - \(quoteAuthor)")
-    }
+    let pipelinesService = ConcourseAPI.PipelinesService()
+    let jobsService = ConcourseAPI.JobsService()
+
+    let clickHandler = ClickHandler(workspace: NSWorkspace.shared)
+
+    menuController = MenuController(clickHandler: clickHandler)
+
+    stateManager = Concourse.StateManager(targets: targets, pipelinesService: pipelinesService, jobsService: jobsService)
+    stateManager.delegate = menuController
+
+    menuController.load()
+    stateManager.start()
+  }
 }

@@ -4,10 +4,33 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Radar.xcscheme</key>
+		<key>Everything.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>Radar.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>3AE2602F1FEAD936008DD8E1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3AE2603F1FEAD937008DD8E1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3AE2604A1FEAD937008DD8E1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
