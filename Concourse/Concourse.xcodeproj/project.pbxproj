@@ -30,6 +30,7 @@
 		3A941BD92028BB69003AC53A /* FakePipelineListable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A941BD82028BB69003AC53A /* FakePipelineListable.swift */; };
 		3A941BDB202938B5003AC53A /* FakeJobListable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A941BDA202938B5003AC53A /* FakeJobListable.swift */; };
 		3A963381202162CA001B1F4F /* ConcourseAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A88417520215F29008B41B4 /* ConcourseAPI.framework */; };
+		3AB64C222040BC3E000B32AC /* FakeStateManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB64C212040BC3E000B32AC /* FakeStateManagerDelegate.swift */; };
 		3ACAE6AC20240D400051A487 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACAE6AE20240D400051A487 /* Nimble.framework */; };
 		3ACAE6AD20240D400051A487 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACAE6AF20240D400051A487 /* Quick.framework */; };
 		3AD2CE03203913D5009BB9B9 /* GroupSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD2CE02203913D4009BB9B9 /* GroupSpec.swift */; };
@@ -73,6 +74,7 @@
 		3A941BD62028B73A003AC53A /* FakeHTTPSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeHTTPSession.swift; sourceTree = "<group>"; };
 		3A941BD82028BB69003AC53A /* FakePipelineListable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakePipelineListable.swift; sourceTree = "<group>"; };
 		3A941BDA202938B5003AC53A /* FakeJobListable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeJobListable.swift; sourceTree = "<group>"; };
+		3AB64C212040BC3E000B32AC /* FakeStateManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeStateManagerDelegate.swift; sourceTree = "<group>"; };
 		3ACAE6AE20240D400051A487 /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ACAE6AF20240D400051A487 /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AD2CE02203913D4009BB9B9 /* GroupSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSpec.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				3A941BD62028B73A003AC53A /* FakeHTTPSession.swift */,
 				3A941BD82028BB69003AC53A /* FakePipelineListable.swift */,
 				3A941BDA202938B5003AC53A /* FakeJobListable.swift */,
+				3AB64C212040BC3E000B32AC /* FakeStateManagerDelegate.swift */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				3A884169202157B1008B41B4 /* PipelineSpec.swift in Sources */,
 				3A941BD92028BB69003AC53A /* FakePipelineListable.swift in Sources */,
 				3A63AA2F20333BF70044C80F /* PipelineFactory.swift in Sources */,
+				3AB64C222040BC3E000B32AC /* FakeStateManagerDelegate.swift in Sources */,
 				3A63AA31203345AE0044C80F /* TargetFactory.swift in Sources */,
 				3A63AA332038ADC60044C80F /* GroupFactory.swift in Sources */,
 				3A941BD72028B73A003AC53A /* FakeHTTPSession.swift in Sources */,

@@ -8,10 +8,14 @@ class StateManagerSpec: QuickSpec {
     var pipelinesService: FakePipelineListable!
     var jobsService: FakeJobListable!
     var targets: [Target] = []
+    var firstDelegate: FakeStateManagerDelegate!
+    var secondDelegate: FakeStateManagerDelegate!
 
     beforeEach {
       pipelinesService = FakePipelineListable()
       jobsService = FakeJobListable()
+      firstDelegate = FakeStateManagerDelegate()
+      secondDelegate = FakeStateManagerDelegate()
 
       let firstTarget = TargetFactory.newTarget(api: "first-api", team: "first-team")
 
@@ -26,7 +30,7 @@ class StateManagerSpec: QuickSpec {
       let secondPipeline = PipelineFactory.newAPIPipeline(id: 2, name: "second-pipeline", groups: [secondGroup])
 
       let thirdBuild = BuildFactory.newBuild(id: 3, name: "third-build", status: "pending")
-      let thirdJob = JobFactory.newAPIJob(id: 3, name: "third-job", paused: false, finishedBuild: nil, nextBuild: nil)
+      let thirdJob = JobFactory.newAPIJob(id: 3, name: "third-job", paused: false, finishedBuild: thirdBuild, nextBuild: nil)
       let thirdGroup = GroupFactory.newAPIGroup(name: "third-group", jobs: [thirdJob.name])
       let thirdPipeline = PipelineFactory.newAPIPipeline(id: 3, name: "third-pipeline", groups: [thirdGroup])
 
@@ -41,6 +45,8 @@ class StateManagerSpec: QuickSpec {
       targets.append(firstTarget)
 
       manager = StateManager(targets: targets, pipelinesService: pipelinesService, jobsService: jobsService)
+      manager.delegates.append(firstDelegate)
+      manager.delegates.append(secondDelegate)
     }
 
     afterEach {
@@ -227,6 +233,27 @@ class StateManagerSpec: QuickSpec {
             }
           }
         }
+      }
+    }
+
+    describe("fetchAndNotify") {
+      beforeEach {
+        manager.fetchAndNotify()
+      }
+
+      it("notifies the delegates when the state changes") {
+        let firstState = firstDelegate.stateDidChangeCall.receives.state
+        let secondState = secondDelegate.stateDidChangeCall.receives.state
+
+        expect(firstState?.targets.count).to(equal(1))
+        expect(firstState?.targets).to(containElementSatisfying({ target in
+          return target.api == "first-api" && target.team == "first-team"
+        }))
+
+        expect(secondState?.targets.count).to(equal(1))
+        expect(secondState?.targets).to(containElementSatisfying({ target in
+          return target.api == "first-api" && target.team == "first-team"
+        }))
       }
     }
   }

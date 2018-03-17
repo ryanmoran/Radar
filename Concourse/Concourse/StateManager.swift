@@ -18,7 +18,7 @@ extension ConcourseAPI.JobsService: JobListable {}
 
 public class StateManager {
   public let targets: [Target]
-  public var delegate: StateManagerDelegate?
+  public var delegates: [StateManagerDelegate]
 
   let pipelinesService: PipelineListable
   let jobsService: JobListable
@@ -29,23 +29,31 @@ public class StateManager {
     self.targets = targets
     self.pipelinesService = pipelinesService
     self.jobsService = jobsService
+    self.delegates = []
   }
 
   public func start() {
     DispatchQueue.global(qos: .background).async {
-      let (state, error) = self.fetch()
-      if let error = error {
-        // TODO: handle error
-      }
-
-      if self.state != state {
-        self.delegate?.stateDidChange(self, state: state)
-        self.state = state
-      }
+      self.fetchAndNotify()
 
       sleep(10)
 
       self.start()
+    }
+  }
+
+  public func fetchAndNotify() {
+    let (state, error) = self.fetch()
+    if let error = error {
+      // TODO: handle error
+    }
+
+    if self.state != state {
+      for delegate in delegates {
+        delegate.stateDidChange(self, state: state)
+      }
+
+      self.state = state
     }
   }
 

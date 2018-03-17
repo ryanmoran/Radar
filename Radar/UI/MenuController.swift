@@ -7,10 +7,10 @@ class MenuController: NSObject {
   var offset = 0.0
   var loaded = false
   var timer: Timer!
-  var clickHandler: ClickHandler
+  var workspace: Workspace
 
-  init(clickHandler: ClickHandler) {
-    self.clickHandler = clickHandler
+  init(workspace: Workspace) {
+    self.workspace = workspace
 
     super.init()
 
@@ -53,7 +53,7 @@ extension MenuController: Concourse.StateManagerDelegate {
     for target in state.targets {
       menu.addItem(TargetMenuItem(target))
       for pipeline in target.pipelines {
-        menu.addItem(PipelineMenuItem(pipeline, handler: self.clickHandler))
+        menu.addItem(PipelineMenuItem(pipeline, workspace: self.workspace))
       }
       menu.addItem(NSMenuItem.separator())
     }

@@ -26,8 +26,6 @@
 		3A941BAA20256D43003AC53A /* SettingsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A941BA920256D43003AC53A /* SettingsSpec.swift */; };
 		3A941BBA2026609B003AC53A /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABF32FE2023FDBA00E5A6C9 /* Nimble.framework */; };
 		3A941BBB2026609B003AC53A /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABF32DC2023FD9800E5A6C9 /* Quick.framework */; };
-		3A941BBD20278585003AC53A /* ClickHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A941BBC20278585003AC53A /* ClickHandler.swift */; };
-		3A941BBF20278915003AC53A /* ClickHandlerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A941BBE20278915003AC53A /* ClickHandlerSpec.swift */; };
 		3A941BC420278BE5003AC53A /* FakeWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A941BC320278BE5003AC53A /* FakeWorkspace.swift */; };
 		3AB31A35201E9D360033565F /* ConcourseAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB31A30201E9C570033565F /* ConcourseAPI.framework */; };
 		3AB31A36201E9D360033565F /* ConcourseAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB31A30201E9C570033565F /* ConcourseAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -261,8 +259,6 @@
 		3A941BA5202566BF003AC53A /* DefaultPreferences.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
 		3A941BA720256D1F003AC53A /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		3A941BA920256D43003AC53A /* SettingsSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSpec.swift; sourceTree = "<group>"; };
-		3A941BBC20278585003AC53A /* ClickHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickHandler.swift; sourceTree = "<group>"; };
-		3A941BBE20278915003AC53A /* ClickHandlerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickHandlerSpec.swift; sourceTree = "<group>"; };
 		3A941BC320278BE5003AC53A /* FakeWorkspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeWorkspace.swift; sourceTree = "<group>"; };
 		3AB31A2A201E9C560033565F /* ConcourseAPI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ConcourseAPI.xcodeproj; path = ConcourseAPI/ConcourseAPI.xcodeproj; sourceTree = "<group>"; };
 		3ABF32C92023FD9800E5A6C9 /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = Vendor/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
@@ -397,7 +393,6 @@
 		3AD2CDF820390294009BB9B9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				3A941BBC20278585003AC53A /* ClickHandler.swift */,
 				3AD2CDFE20390B40009BB9B9 /* GroupMenuItem.swift */,
 				3AD2CDFC20390593009BB9B9 /* JobMenuItem.swift */,
 				3A63C76A1FEAF2BC00A64CEA /* MenuController.swift */,
@@ -410,7 +405,6 @@
 		3AD2CDFA203904E6009BB9B9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				3A941BBE20278915003AC53A /* ClickHandlerSpec.swift */,
 				3A2FA6FF203B7E8300D46DC7 /* GroupMenuItemSpec.swift */,
 				3A3FDFEC203A044C008EC5FD /* JobMenuItemSpec.swift */,
 				3A2FA719203B872B00D46DC7 /* PipelineMenuItemSpec.swift */,
@@ -814,7 +808,6 @@
 				3A63C76B1FEAF2BC00A64CEA /* MenuController.swift in Sources */,
 				3AE260341FEAD937008DD8E1 /* AppDelegate.swift in Sources */,
 				3A2FA720203E1DD000D46DC7 /* TargetMenuItem.swift in Sources */,
-				3A941BBD20278585003AC53A /* ClickHandler.swift in Sources */,
 				3AD2CDF7203901C7009BB9B9 /* NSImage.swift in Sources */,
 				3AED98AD20407888006CF411 /* NSColor.swift in Sources */,
 				3AD2CDFD20390593009BB9B9 /* JobMenuItem.swift in Sources */,
@@ -833,7 +826,6 @@
 				3A3FDFED203A044C008EC5FD /* JobMenuItemSpec.swift in Sources */,
 				3A2FA71A203B872B00D46DC7 /* PipelineMenuItemSpec.swift in Sources */,
 				3A3FE00A203A1E60008EC5FD /* GroupFactory.swift in Sources */,
-				3A941BBF20278915003AC53A /* ClickHandlerSpec.swift in Sources */,
 				3A3FE008203A1DBA008EC5FD /* PipelineFactory.swift in Sources */,
 				3A2FA700203B7E8300D46DC7 /* GroupMenuItemSpec.swift in Sources */,
 				3AFF84E6202A91E600A85326 /* FakeDefaults.swift in Sources */,

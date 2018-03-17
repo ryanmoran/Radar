@@ -26,12 +26,10 @@ extension AppDelegate: NSApplicationDelegate {
     let pipelinesService = ConcourseAPI.PipelinesService()
     let jobsService = ConcourseAPI.JobsService()
 
-    let clickHandler = ClickHandler(workspace: NSWorkspace.shared)
-
-    menuController = MenuController(clickHandler: clickHandler)
-
     stateManager = Concourse.StateManager(targets: targets, pipelinesService: pipelinesService, jobsService: jobsService)
-    stateManager.delegate = menuController
+
+    menuController = MenuController(workspace: NSWorkspace.shared)
+    stateManager.delegates.append(menuController)
 
     menuController.load()
     stateManager.start()

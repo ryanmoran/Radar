@@ -5,7 +5,7 @@ import Nimble
 class JobMenuItemSpec: QuickSpec {
   override func spec() {
     var item: JobMenuItem!
-    var handler: ClickHandler!
+    var workspace: FakeWorkspace!
 
     beforeEach {
       let target = TargetFactory.newTarget(api: "some-api", team: "some-team")
@@ -14,26 +14,25 @@ class JobMenuItemSpec: QuickSpec {
       let job = JobFactory.newJob(id: 1, name: "some-job", finishedBuild: nil, nextBuild: nil, pipeline: pipeline)
       pipeline.jobs.append(job)
 
-      let workspace = FakeWorkspace()
-      handler = ClickHandler(workspace: workspace)
-      item = JobMenuItem(job, handler: handler)
+      workspace = FakeWorkspace()
+      item = JobMenuItem(job, workspace: workspace)
     }
 
     afterEach {
       item = nil
-      handler = nil
+      workspace = nil
     }
 
     it("has a title") {
       expect(item.title).to(equal("some-job"))
     }
 
-    it("has a target") {
-      expect(ObjectIdentifier(item.target!)).to(equal(ObjectIdentifier(handler)))
+    it("acts as its own target") {
+      expect(ObjectIdentifier(item)).to(equal(ObjectIdentifier(item)))
     }
 
     it("has an action") {
-      expect(item.action).to(equal(#selector(handler.handle(_:))))
+      expect(item.action).to(equal(#selector(item.handleClick(_:))))
     }
 
     it("has a tooltip") {
@@ -44,25 +43,27 @@ class JobMenuItemSpec: QuickSpec {
       expect(item.image).to(beAnInstanceOf(NSImage.self))
     }
 
-    it("has a representedObject that contains a url for the job") {
-      let url = item.representedObject as! URL
-      expect(url.absoluteString).to(equal("some-api/teams/some-team/pipelines/some-pipeline/jobs/some-job"))
-    }
+    context("when clicked") {
+      it("opens the url") {
+        item.handleClick(item)
+        expect(workspace.openCall.receives.url).to(equal(URL(string:"some-api/teams/some-team/pipelines/some-pipeline/jobs/some-job")))
+      }
 
-    context("when the job has a build") {
-      it("has a representedObject that contains a url for the build") {
-        let target = TargetFactory.newTarget(api: "some-api", team: "some-team")
-        var pipeline = PipelineFactory.newPipeline(id: 1, name: "some-pipeline", target: target, groups: [])
+      context("when the job has a build") {
+        it("opens the url that contains a path to the build") {
+          let target = TargetFactory.newTarget(api: "some-api", team: "some-team")
+          var pipeline = PipelineFactory.newPipeline(id: 1, name: "some-pipeline", target: target, groups: [])
 
-        let build = BuildFactory.newBuild(id: 1, name: "some-build", status: "pending")
-        let job = JobFactory.newJob(id: 1, name: "some-job", finishedBuild: nil, nextBuild: build, pipeline: pipeline)
-        pipeline.jobs.append(job)
+          let build = BuildFactory.newBuild(id: 1, name: "some-build", status: "pending")
+          let job = JobFactory.newJob(id: 1, name: "some-job", finishedBuild: nil, nextBuild: build, pipeline: pipeline)
+          pipeline.jobs.append(job)
 
 
-        item = JobMenuItem(job, handler: handler)
+          item = JobMenuItem(job, workspace: workspace)
 
-        let url = item.representedObject as! URL
-        expect(url.absoluteString).to(equal("some-api/teams/some-team/pipelines/some-pipeline/jobs/some-job/builds/some-build"))
+          item.handleClick(item)
+          expect(workspace.openCall.receives.url).to(equal(URL(string:"some-api/teams/some-team/pipelines/some-pipeline/jobs/some-job/builds/some-build")))
+        }
       }
     }
   }
