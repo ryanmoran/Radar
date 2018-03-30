@@ -1,0 +1,12 @@
+# Radar
+
+You can `brew install` this with the following:
+```
+brew cask install ryanmoran/tools/radar
+```
+
+MacOS Sierra and higher has become much more strict about where
+applications come from. In order to run `Radar`, you might need
+to allow applications to be run from "Anywhere". To do this,
+check out this
+[article](http://osxdaily.com/2016/09/27/allow-apps-from-anywhere-macos-gatekeeper/).
