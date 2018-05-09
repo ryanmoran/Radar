@@ -6,6 +6,7 @@ class MenuController: NSObject {
   let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
   var offset = 0.0
   var loaded = false
+  var canUpdateMenu = true
   var timer: Timer!
   var workspace: Workspace
 
@@ -14,7 +15,10 @@ class MenuController: NSObject {
 
     super.init()
 
-    statusItem.menu = NSMenu()
+    let menu = NSMenu()
+    menu.delegate = self
+    statusItem.menu = menu
+
 
     if let menu = statusItem.menu {
       menu.addItem(NSMenuItem(title:"Loading...", action: nil, keyEquivalent: ""))
@@ -45,6 +49,8 @@ class MenuController: NSObject {
 
 extension MenuController: Concourse.StateManagerDelegate {
   func stateDidChange(_ manager: Concourse.StateManager, state: Concourse.State) {
+    if !canUpdateMenu { return }
+
     loaded = true
 
     guard let menu = statusItem.menu else { return }
@@ -58,5 +64,15 @@ extension MenuController: Concourse.StateManagerDelegate {
       menu.addItem(NSMenuItem.separator())
     }
     menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+  }
+}
+
+extension MenuController: NSMenuDelegate {
+  func menuWillOpen(_ menu: NSMenu) {
+    canUpdateMenu = false
+  }
+
+  func menuDidClose(_ menu: NSMenu) {
+    canUpdateMenu = true
   }
 }
