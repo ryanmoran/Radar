@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A1328C320B0B065009AD679 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1328C220B0B065009AD679 /* Logger.swift */; };
+		3A1328C520B0B226009AD679 /* FakeLoggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1328C420B0B226009AD679 /* FakeLoggable.swift */; };
 		3A63AA2120324FFA0044C80F /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A63AA2020324FFA0044C80F /* Group.swift */; };
 		3A63AA2B203264500044C80F /* JobFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A63AA2A203264500044C80F /* JobFactory.swift */; };
 		3A63AA2D203268E60044C80F /* BuildFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A63AA2C203268E60044C80F /* BuildFactory.swift */; };
@@ -49,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A1328C220B0B065009AD679 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		3A1328C420B0B226009AD679 /* FakeLoggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeLoggable.swift; sourceTree = "<group>"; };
 		3A63AA2020324FFA0044C80F /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		3A63AA2A203264500044C80F /* JobFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobFactory.swift; sourceTree = "<group>"; };
 		3A63AA2C203268E60044C80F /* BuildFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildFactory.swift; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 		3A8841382021569D008B41B4 /* Concourse */ = {
 			isa = PBXGroup;
 			children = (
+				3A1328C220B0B065009AD679 /* Logger.swift */,
 				3A884161202156D3008B41B4 /* StateManager.swift */,
 				3A63AA28203261010044C80F /* Domain */,
 				3A8841392021569D008B41B4 /* Concourse.h */,
@@ -201,6 +206,7 @@
 				3A941BD62028B73A003AC53A /* FakeHTTPSession.swift */,
 				3A941BD82028BB69003AC53A /* FakePipelineListable.swift */,
 				3A941BDA202938B5003AC53A /* FakeJobListable.swift */,
+				3A1328C420B0B226009AD679 /* FakeLoggable.swift */,
 				3AB64C212040BC3E000B32AC /* FakeStateManagerDelegate.swift */,
 			);
 			path = Fakes;
@@ -323,6 +329,7 @@
 				3A884162202156D4008B41B4 /* StateManager.swift in Sources */,
 				3AEEA247202BDA9B00BBFA2B /* Build.swift in Sources */,
 				3A88415A202156B2008B41B4 /* Job.swift in Sources */,
+				3A1328C320B0B065009AD679 /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +339,7 @@
 			files = (
 				3A63AA2B203264500044C80F /* JobFactory.swift in Sources */,
 				3A884168202157B1008B41B4 /* JobSpec.swift in Sources */,
+				3A1328C520B0B226009AD679 /* FakeLoggable.swift in Sources */,
 				3A941BCE2027AC76003AC53A /* TargetSpec.swift in Sources */,
 				3A941BDB202938B5003AC53A /* FakeJobListable.swift in Sources */,
 				3A884169202157B1008B41B4 /* PipelineSpec.swift in Sources */,

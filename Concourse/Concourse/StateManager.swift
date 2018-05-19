@@ -1,4 +1,5 @@
 import Foundation
+import os.log
 import ConcourseAPI
 
 public protocol StateManagerDelegate: class {
@@ -23,8 +24,10 @@ public class StateManager {
   let pipelinesService: PipelineListable
   let jobsService: JobListable
   var state: State
+  let logger: Loggable
 
-  public init(targets: [Target], pipelinesService: PipelineListable, jobsService: JobListable) {
+  public init(logger: Loggable, targets: [Target], pipelinesService: PipelineListable, jobsService: JobListable) {
+    self.logger = logger
     self.state = State()
     self.targets = targets
     self.pipelinesService = pipelinesService
@@ -45,7 +48,7 @@ public class StateManager {
   public func fetchAndNotify() {
     let (state, error) = self.fetch()
     if let error = error {
-      // TODO: handle error
+      logger.error(message: "failed to fetch concourse state", error: error)
     }
 
     if self.state != state {
@@ -65,7 +68,6 @@ public class StateManager {
 
       let (apiPipelines, error) = pipelinesService.list(target: target.target)
       if let error = error {
-        // TODO: handle error
         return (State(), error)
       }
 
@@ -74,7 +76,6 @@ public class StateManager {
 
         let (apiJobs, error) = jobsService.list(target: target.target, pipelineName: apiPipeline.name)
         if let error = error {
-          // TODO: handle error
           return (State(), error)
         }
 

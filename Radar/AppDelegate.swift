@@ -1,4 +1,5 @@
 import AppKit
+import os.log
 import Concourse
 import ConcourseAPI
 
@@ -17,6 +18,7 @@ extension AppDelegate: NSApplicationDelegate {
   func applicationDidFinishLaunching(_ notification: Notification) {
     let defaults = Bundle.main.url(forResource: "DefaultPreferences", withExtension: "plist")!
     let settings = Settings(defaults: UserDefaults.standard, url: defaults)
+    let logger = Concourse.Logger(log: OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "general"))
 
     var targets: [Concourse.Target] = []
     for target in settings.targets {
@@ -26,7 +28,7 @@ extension AppDelegate: NSApplicationDelegate {
     let pipelinesService = ConcourseAPI.PipelinesService()
     let jobsService = ConcourseAPI.JobsService()
 
-    stateManager = Concourse.StateManager(targets: targets, pipelinesService: pipelinesService, jobsService: jobsService)
+    stateManager = Concourse.StateManager(logger: logger, targets: targets, pipelinesService: pipelinesService, jobsService: jobsService)
 
     menuController = MenuController(workspace: NSWorkspace.shared)
     stateManager.delegates.append(menuController)

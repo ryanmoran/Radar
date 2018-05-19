@@ -2,6 +2,20 @@ import Quick
 import Nimble
 import Concourse
 
+enum TestableErrors: Error {
+  case String(String)
+}
+
+extension TestableErrors: Equatable {
+  static func == (lhs: TestableErrors, rhs: TestableErrors) -> Bool {
+    switch (lhs, rhs) {
+    case (.String(let l), .String(let r)):
+      print(l, r)
+      return l == r
+    }
+  }
+}
+
 class StateManagerSpec: QuickSpec {
   override func spec() {
     var manager: StateManager!
@@ -10,12 +24,14 @@ class StateManagerSpec: QuickSpec {
     var targets: [Target] = []
     var firstDelegate: FakeStateManagerDelegate!
     var secondDelegate: FakeStateManagerDelegate!
+    var logger: FakeLoggable!
 
     beforeEach {
       pipelinesService = FakePipelineListable()
       jobsService = FakeJobListable()
       firstDelegate = FakeStateManagerDelegate()
       secondDelegate = FakeStateManagerDelegate()
+      logger = FakeLoggable()
 
       let firstTarget = TargetFactory.newTarget(api: "first-api", team: "first-team")
 
@@ -44,7 +60,7 @@ class StateManagerSpec: QuickSpec {
       jobsService.listCall.returns.jobs = [firstJob, secondJob, thirdJob, fourthJob]
       targets.append(firstTarget)
 
-      manager = StateManager(targets: targets, pipelinesService: pipelinesService, jobsService: jobsService)
+      manager = StateManager(logger: logger, targets: targets, pipelinesService: pipelinesService, jobsService: jobsService)
       manager.delegates.append(firstDelegate)
       manager.delegates.append(secondDelegate)
     }
@@ -237,11 +253,9 @@ class StateManagerSpec: QuickSpec {
     }
 
     describe("fetchAndNotify") {
-      beforeEach {
-        manager.fetchAndNotify()
-      }
-
       it("notifies the delegates when the state changes") {
+        manager.fetchAndNotify()
+
         let firstState = firstDelegate.stateDidChangeCall.receives.state
         let secondState = secondDelegate.stateDidChangeCall.receives.state
 
@@ -254,6 +268,17 @@ class StateManagerSpec: QuickSpec {
         expect(secondState?.targets).to(containElementSatisfying({ target in
           return target.api == "first-api" && target.team == "first-team"
         }))
+      }
+
+      context("when there are errors") {
+        it("logs those errors") {
+          pipelinesService.listCall.returns.error = TestableErrors.String("this is an error")
+
+          manager.fetchAndNotify()
+
+          expect(logger.errorCall.receives.message).to(equal("failed to fetch concourse state"))
+          expect(logger.errorCall.receives.error).to(matchError(TestableErrors.String("this is an error")))
+        }
       }
     }
   }
