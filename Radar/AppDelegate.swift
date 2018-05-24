@@ -18,7 +18,7 @@ extension AppDelegate: NSApplicationDelegate {
   func applicationDidFinishLaunching(_ notification: Notification) {
     let defaults = Bundle.main.url(forResource: "DefaultPreferences", withExtension: "plist")!
     let settings = Settings(defaults: UserDefaults.standard, url: defaults)
-    let logger = Concourse.Logger(log: OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "general"))
+    let logger = Logger(log: OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "general"))
 
     var targets: [Concourse.Target] = []
     for target in settings.targets {

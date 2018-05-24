@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A1328C320B0B065009AD679 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1328C220B0B065009AD679 /* Logger.swift */; };
 		3A1328C520B0B226009AD679 /* FakeLoggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1328C420B0B226009AD679 /* FakeLoggable.swift */; };
 		3A63AA2120324FFA0044C80F /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A63AA2020324FFA0044C80F /* Group.swift */; };
 		3A63AA2B203264500044C80F /* JobFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A63AA2A203264500044C80F /* JobFactory.swift */; };
@@ -15,6 +14,7 @@
 		3A63AA2F20333BF70044C80F /* PipelineFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A63AA2E20333BF70044C80F /* PipelineFactory.swift */; };
 		3A63AA31203345AE0044C80F /* TargetFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A63AA30203345AE0044C80F /* TargetFactory.swift */; };
 		3A63AA332038ADC60044C80F /* GroupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A63AA322038ADC60044C80F /* GroupFactory.swift */; };
+		3A7688C720B500D7000413BF /* Loggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7688C620B500D7000413BF /* Loggable.swift */; };
 		3A8841402021569E008B41B4 /* Concourse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8841362021569D008B41B4 /* Concourse.framework */; };
 		3A8841472021569E008B41B4 /* Concourse.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A8841392021569D008B41B4 /* Concourse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A88415A202156B2008B41B4 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A884159202156B1008B41B4 /* Job.swift */; };
@@ -51,7 +51,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3A1328C220B0B065009AD679 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		3A1328C420B0B226009AD679 /* FakeLoggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeLoggable.swift; sourceTree = "<group>"; };
 		3A63AA2020324FFA0044C80F /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		3A63AA2A203264500044C80F /* JobFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobFactory.swift; sourceTree = "<group>"; };
@@ -59,6 +58,7 @@
 		3A63AA2E20333BF70044C80F /* PipelineFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineFactory.swift; sourceTree = "<group>"; };
 		3A63AA30203345AE0044C80F /* TargetFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetFactory.swift; sourceTree = "<group>"; };
 		3A63AA322038ADC60044C80F /* GroupFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFactory.swift; sourceTree = "<group>"; };
+		3A7688C620B500D7000413BF /* Loggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loggable.swift; sourceTree = "<group>"; };
 		3A8841362021569D008B41B4 /* Concourse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Concourse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8841392021569D008B41B4 /* Concourse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Concourse.h; sourceTree = "<group>"; };
 		3A88413A2021569D008B41B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -169,8 +169,8 @@
 		3A8841382021569D008B41B4 /* Concourse */ = {
 			isa = PBXGroup;
 			children = (
-				3A1328C220B0B065009AD679 /* Logger.swift */,
 				3A884161202156D3008B41B4 /* StateManager.swift */,
+				3A7688C620B500D7000413BF /* Loggable.swift */,
 				3A63AA28203261010044C80F /* Domain */,
 				3A8841392021569D008B41B4 /* Concourse.h */,
 				3A88413A2021569D008B41B4 /* Info.plist */,
@@ -328,8 +328,8 @@
 				3A63AA2120324FFA0044C80F /* Group.swift in Sources */,
 				3A884162202156D4008B41B4 /* StateManager.swift in Sources */,
 				3AEEA247202BDA9B00BBFA2B /* Build.swift in Sources */,
+				3A7688C720B500D7000413BF /* Loggable.swift in Sources */,
 				3A88415A202156B2008B41B4 /* Job.swift in Sources */,
-				3A1328C320B0B065009AD679 /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
