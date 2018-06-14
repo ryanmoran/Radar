@@ -33,7 +33,6 @@ extension AppDelegate: NSApplicationDelegate {
     menuController = MenuController(workspace: NSWorkspace.shared)
     stateManager.delegates.append(menuController)
 
-    menuController.load()
     stateManager.start()
   }
 }

@@ -28,6 +28,7 @@
 		3A941BBA2026609B003AC53A /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABF32FE2023FDBA00E5A6C9 /* Nimble.framework */; };
 		3A941BBB2026609B003AC53A /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABF32DC2023FD9800E5A6C9 /* Quick.framework */; };
 		3A941BC420278BE5003AC53A /* FakeWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A941BC320278BE5003AC53A /* FakeWorkspace.swift */; };
+		3AACDDCE20B85A4B00FDBF9E /* StatusItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AACDDCD20B85A4B00FDBF9E /* StatusItem.swift */; };
 		3AB31A35201E9D360033565F /* ConcourseAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB31A30201E9C570033565F /* ConcourseAPI.framework */; };
 		3AB31A36201E9D360033565F /* ConcourseAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB31A30201E9C570033565F /* ConcourseAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3AD2CDF7203901C7009BB9B9 /* NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD2CDE0203901C7009BB9B9 /* NSImage.swift */; };
@@ -262,6 +263,7 @@
 		3A941BA720256D1F003AC53A /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		3A941BA920256D43003AC53A /* SettingsSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSpec.swift; sourceTree = "<group>"; };
 		3A941BC320278BE5003AC53A /* FakeWorkspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeWorkspace.swift; sourceTree = "<group>"; };
+		3AACDDCD20B85A4B00FDBF9E /* StatusItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItem.swift; sourceTree = "<group>"; };
 		3AB31A2A201E9C560033565F /* ConcourseAPI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ConcourseAPI.xcodeproj; path = ConcourseAPI/ConcourseAPI.xcodeproj; sourceTree = "<group>"; };
 		3ABF32C92023FD9800E5A6C9 /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = Vendor/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
 		3ABF32F32023FDBA00E5A6C9 /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = Vendor/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 				3AD2CDFC20390593009BB9B9 /* JobMenuItem.swift */,
 				3A63C76A1FEAF2BC00A64CEA /* MenuController.swift */,
 				3AD2CE0020390DD9009BB9B9 /* PipelineMenuItem.swift */,
+				3AACDDCD20B85A4B00FDBF9E /* StatusItem.swift */,
 				3A2FA71F203E1DD000D46DC7 /* TargetMenuItem.swift */,
 			);
 			path = UI;
@@ -812,6 +815,7 @@
 				3AE260341FEAD937008DD8E1 /* AppDelegate.swift in Sources */,
 				3A2FA720203E1DD000D46DC7 /* TargetMenuItem.swift in Sources */,
 				3AD2CDF7203901C7009BB9B9 /* NSImage.swift in Sources */,
+				3AACDDCE20B85A4B00FDBF9E /* StatusItem.swift in Sources */,
 				3AED98AD20407888006CF411 /* NSColor.swift in Sources */,
 				3AD2CDFD20390593009BB9B9 /* JobMenuItem.swift in Sources */,
 				3A7688AF20B4FFFC000413BF /* Logger.swift in Sources */,

@@ -52,5 +52,16 @@ class TargetSpec: QuickSpec {
         expect(target).to(equal(otherTarget))
       }
     }
+
+    describe("Hashable") {
+      it("can be hashed") {
+        var otherTarget = TargetFactory.newTarget(api: "some-api", team: "some-team")
+        otherTarget.pipelines.append(pipeline1)
+        otherTarget.pipelines.append(pipeline2)
+
+        expect(target.hashValue).to(equal(4))
+        expect(target.hashValue).to(equal(otherTarget.hashValue))
+      }
+    }
   }
 }

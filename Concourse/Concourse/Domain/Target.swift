@@ -26,3 +26,9 @@ extension Target: Equatable {
       && lhs.pipelines == rhs.pipelines
   }
 }
+
+extension Target: Hashable {
+  public var hashValue: Int {
+    return api.hashValue + team.hashValue
+  }
+}

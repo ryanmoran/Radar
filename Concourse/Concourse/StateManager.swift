@@ -51,13 +51,13 @@ public class StateManager {
       logger.error(message: "failed to fetch concourse state", error: error)
     }
 
-    if self.state != state {
+//    if self.state != state {
       for delegate in delegates {
         delegate.stateDidChange(self, state: state)
       }
 
       self.state = state
-    }
+//    }
   }
 
   public func fetch() -> (State, Error?) {
