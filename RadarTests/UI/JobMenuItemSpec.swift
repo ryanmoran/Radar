@@ -11,7 +11,7 @@ class JobMenuItemSpec: QuickSpec {
       let target = TargetFactory.newTarget(api: "some-api", team: "some-team")
       var pipeline = PipelineFactory.newPipeline(id: 1, name: "some-pipeline", target: target, groups: [])
 
-      let job = JobFactory.newJob(id: 1, name: "some-job", finishedBuild: nil, nextBuild: nil, pipeline: pipeline)
+      let job = JobFactory.newJob(id: 1, name: "some-job", teamName: target.team, pipelineName: pipeline.name, finishedBuild: nil, nextBuild: nil, pipeline: pipeline)
       pipeline.jobs.append(job)
 
       workspace = FakeWorkspace()
@@ -46,7 +46,7 @@ class JobMenuItemSpec: QuickSpec {
     context("when clicked") {
       it("opens the url") {
         item.handleClick(item)
-        expect(workspace.openCall.receives.url).to(equal(URL(string:"some-api/teams/some-team/pipelines/some-pipeline/jobs/some-job")))
+        expect(workspace.openCall.receives.url).to(equal(URL(string: "some-api/teams/some-team/pipelines/some-pipeline/jobs/some-job")))
       }
 
       context("when the job has a build") {
@@ -55,14 +55,14 @@ class JobMenuItemSpec: QuickSpec {
           var pipeline = PipelineFactory.newPipeline(id: 1, name: "some-pipeline", target: target, groups: [])
 
           let build = BuildFactory.newBuild(id: 1, name: "some-build", status: "pending")
-          let job = JobFactory.newJob(id: 1, name: "some-job", finishedBuild: nil, nextBuild: build, pipeline: pipeline)
+          let job = JobFactory.newJob(id: 1, name: "some-job", teamName: target.team, pipelineName: pipeline.name, finishedBuild: nil, nextBuild: build, pipeline: pipeline)
           pipeline.jobs.append(job)
 
 
           item = JobMenuItem(job, workspace: workspace)
 
           item.handleClick(item)
-          expect(workspace.openCall.receives.url).to(equal(URL(string:"some-api/teams/some-team/pipelines/some-pipeline/jobs/some-job/builds/some-build")))
+          expect(workspace.openCall.receives.url).to(equal(URL(string: "some-api/teams/some-team/pipelines/some-pipeline/jobs/some-job/builds/some-build")))
         }
       }
     }

@@ -18,6 +18,14 @@ public struct Job {
     return job.name
   }
 
+  public var teamName: String {
+    return job.teamName
+  }
+
+  public var pipelineName: String {
+    return job.pipelineName
+  }
+
   public var target: Target {
     return pipeline.target
   }

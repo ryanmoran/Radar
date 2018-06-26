@@ -25,6 +25,8 @@ class JobsServiceSpec: QuickSpec {
               "id": 1,
               "name": "some-name",
               "paused": false,
+              "team_name": "some-team",
+              "pipeline_name": "some-pipeline",
               "next_build": null,
               "finished_build": null,
               "transition_build": null
@@ -33,6 +35,8 @@ class JobsServiceSpec: QuickSpec {
               "id": 2,
               "name": "other-name",
               "paused": false,
+              "team_name": "some-team",
+              "pipeline_name": "some-pipeline",
               "next_build": null,
               "finished_build": null,
               "transition_build": null

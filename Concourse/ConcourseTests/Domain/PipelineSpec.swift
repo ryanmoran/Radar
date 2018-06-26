@@ -23,13 +23,13 @@ class PipelineSpec: QuickSpec {
       let startedBuild = BuildFactory.newBuild(id: 1, name: "started-build", status: "started")
 
       for job in [
-        JobFactory.newJob(id: 1, name: "succeeded-job", paused: false, finishedBuild: succeededBuild, nextBuild: nil, pipeline: pipeline),
-        JobFactory.newJob(id: 2, name: "aborted-job", paused: false, finishedBuild: abortedBuild, nextBuild: nil, pipeline: pipeline),
-        JobFactory.newJob(id: 3, name: "errored-job", paused: false, finishedBuild: erroredBuild, nextBuild: nil, pipeline: pipeline),
-        JobFactory.newJob(id: 4, name: "pending-job", paused: false, finishedBuild: pendingBuild, nextBuild: nil, pipeline: pipeline),
-        JobFactory.newJob(id: 5, name: "failed-job", paused: false, finishedBuild: failedBuild, nextBuild: pendingBuild, pipeline: pipeline),
-        JobFactory.newJob(id: 6, name: "started-job", paused: false, finishedBuild: startedBuild, nextBuild: nil, pipeline: pipeline),
-        JobFactory.newJob(id: 7, name: "paused-job", paused: true, finishedBuild: nil, nextBuild: startedBuild, pipeline: pipeline),
+        JobFactory.newJob(id: 1, name: "succeeded-job", paused: false, teamName: "some-team", pipelineName: pipeline.name, finishedBuild: succeededBuild, nextBuild: nil, pipeline: pipeline),
+        JobFactory.newJob(id: 2, name: "aborted-job", paused: false, teamName: "some-team", pipelineName: pipeline.name, finishedBuild: abortedBuild, nextBuild: nil, pipeline: pipeline),
+        JobFactory.newJob(id: 3, name: "errored-job", paused: false, teamName: "some-team", pipelineName: pipeline.name, finishedBuild: erroredBuild, nextBuild: nil, pipeline: pipeline),
+        JobFactory.newJob(id: 4, name: "pending-job", paused: false, teamName: "some-team", pipelineName: pipeline.name, finishedBuild: pendingBuild, nextBuild: nil, pipeline: pipeline),
+        JobFactory.newJob(id: 5, name: "failed-job", paused: false, teamName: "some-team", pipelineName: pipeline.name, finishedBuild: failedBuild, nextBuild: pendingBuild, pipeline: pipeline),
+        JobFactory.newJob(id: 6, name: "started-job", paused: false, teamName: "some-team", pipelineName: pipeline.name, finishedBuild: startedBuild, nextBuild: nil, pipeline: pipeline),
+        JobFactory.newJob(id: 7, name: "paused-job", paused: true, teamName: "some-team", pipelineName: pipeline.name, finishedBuild: nil, nextBuild: startedBuild, pipeline: pipeline),
         ] {
           pipeline.jobs.append(job)
       }
@@ -122,13 +122,13 @@ class PipelineSpec: QuickSpec {
         let startedBuild = BuildFactory.newBuild(id: 1, name: "started-build", status: "started")
 
         for job in [
-          JobFactory.newJob(id: 1, name: "succeeded-job", paused: false, finishedBuild: succeededBuild, nextBuild: nil, pipeline: otherPipeline),
-          JobFactory.newJob(id: 2, name: "aborted-job", paused: false, finishedBuild: abortedBuild, nextBuild: nil, pipeline: otherPipeline),
-          JobFactory.newJob(id: 3, name: "errored-job", paused: false, finishedBuild: erroredBuild, nextBuild: nil, pipeline: otherPipeline),
-          JobFactory.newJob(id: 4, name: "pending-job", paused: false, finishedBuild: pendingBuild, nextBuild: nil, pipeline: otherPipeline),
-          JobFactory.newJob(id: 5, name: "failed-job", paused: false, finishedBuild: failedBuild, nextBuild: pendingBuild, pipeline: otherPipeline),
-          JobFactory.newJob(id: 6, name: "started-job", paused: false, finishedBuild: startedBuild, nextBuild: nil, pipeline: otherPipeline),
-          JobFactory.newJob(id: 7, name: "paused-job", paused: true, finishedBuild: nil, nextBuild: startedBuild, pipeline: otherPipeline),
+          JobFactory.newJob(id: 1, name: "succeeded-job", paused: false, teamName: "some-team", pipelineName: otherPipeline.name, finishedBuild: succeededBuild, nextBuild: nil, pipeline: otherPipeline),
+          JobFactory.newJob(id: 2, name: "aborted-job", paused: false, teamName: "some-team", pipelineName: otherPipeline.name, finishedBuild: abortedBuild, nextBuild: nil, pipeline: otherPipeline),
+          JobFactory.newJob(id: 3, name: "errored-job", paused: false, teamName: "some-team", pipelineName: otherPipeline.name, finishedBuild: erroredBuild, nextBuild: nil, pipeline: otherPipeline),
+          JobFactory.newJob(id: 4, name: "pending-job", paused: false, teamName: "some-team", pipelineName: otherPipeline.name, finishedBuild: pendingBuild, nextBuild: nil, pipeline: otherPipeline),
+          JobFactory.newJob(id: 5, name: "failed-job", paused: false, teamName: "some-team", pipelineName: otherPipeline.name, finishedBuild: failedBuild, nextBuild: pendingBuild, pipeline: otherPipeline),
+          JobFactory.newJob(id: 6, name: "started-job", paused: false, teamName: "some-team", pipelineName: otherPipeline.name, finishedBuild: startedBuild, nextBuild: nil, pipeline: otherPipeline),
+          JobFactory.newJob(id: 7, name: "paused-job", paused: true, teamName: "some-team", pipelineName: otherPipeline.name, finishedBuild: nil, nextBuild: startedBuild, pipeline: otherPipeline),
           ] {
             otherPipeline.jobs.append(job)
         }

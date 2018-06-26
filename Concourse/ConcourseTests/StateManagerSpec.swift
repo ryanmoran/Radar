@@ -36,22 +36,22 @@ class StateManagerSpec: QuickSpec {
       let firstTarget = TargetFactory.newTarget(api: "first-api", team: "first-team")
 
       let firstBuild = BuildFactory.newBuild(id: 1, name: "first-build", status: "succeeded")
-      let firstJob = JobFactory.newAPIJob(id: 1, name: "first-job", paused: false, finishedBuild: firstBuild, nextBuild: nil)
+      let firstJob = JobFactory.newAPIJob(id: 1, name: "first-job", paused: false, teamName: "first-team", pipelineName: "first-pipeline", finishedBuild: firstBuild, nextBuild: nil)
       let firstGroup = GroupFactory.newAPIGroup(name: "first-group", jobs: [firstJob.name])
       let firstPipeline = PipelineFactory.newAPIPipeline(id: 1, name: "first-pipeline", groups: [firstGroup])
 
       let secondBuild = BuildFactory.newBuild(id: 2, name: "second-build", status: "failed")
-      let secondJob = JobFactory.newAPIJob(id: 2, name: "second-job", paused: false, finishedBuild: nil, nextBuild: secondBuild)
+      let secondJob = JobFactory.newAPIJob(id: 2, name: "second-job", paused: false, teamName: "first-team", pipelineName: "second-pipeline", finishedBuild: nil, nextBuild: secondBuild)
       let secondGroup = GroupFactory.newAPIGroup(name: "second-group", jobs: [secondJob.name])
       let secondPipeline = PipelineFactory.newAPIPipeline(id: 2, name: "second-pipeline", groups: [secondGroup])
 
       let thirdBuild = BuildFactory.newBuild(id: 3, name: "third-build", status: "pending")
-      let thirdJob = JobFactory.newAPIJob(id: 3, name: "third-job", paused: false, finishedBuild: thirdBuild, nextBuild: nil)
+      let thirdJob = JobFactory.newAPIJob(id: 3, name: "third-job", paused: false, teamName: "first-team", pipelineName: "third-pipeline", finishedBuild: thirdBuild, nextBuild: nil)
       let thirdGroup = GroupFactory.newAPIGroup(name: "third-group", jobs: [thirdJob.name])
       let thirdPipeline = PipelineFactory.newAPIPipeline(id: 3, name: "third-pipeline", groups: [thirdGroup])
 
       let fourthBuild = BuildFactory.newBuild(id: 4, name: "fourth-build", status: "errored")
-      let fourthJob = JobFactory.newAPIJob(id: 4, name: "fourth-job", paused: false, finishedBuild: fourthBuild, nextBuild: nil)
+      let fourthJob = JobFactory.newAPIJob(id: 4, name: "fourth-job", paused: false, teamName: "first-team", pipelineName: "fourth-pipeline", finishedBuild: fourthBuild, nextBuild: nil)
       let fourthGroup = GroupFactory.newAPIGroup(name: "fourth-group", jobs: [fourthJob.name])
       let fourthPipeline = PipelineFactory.newAPIPipeline(id: 4, name: "fourth-pipeline", groups: [fourthGroup])
 

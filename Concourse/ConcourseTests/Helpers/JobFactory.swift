@@ -6,12 +6,22 @@ class JobFactory {
     id: Int,
     name: String,
     paused: Bool,
+    teamName: String,
+    pipelineName: String,
     finishedBuild: Concourse.Build?,
     nextBuild: Concourse.Build?,
     pipeline: Concourse.Pipeline
   ) -> Concourse.Job {
 
-    let job = newAPIJob(id: id, name: name, paused: paused, finishedBuild: finishedBuild, nextBuild: nextBuild)
+    let job = newAPIJob(
+      id: id,
+      name: name,
+      paused: paused,
+      teamName: teamName,
+      pipelineName: pipelineName,
+      finishedBuild: finishedBuild,
+      nextBuild: nextBuild
+    )
 
     return Concourse.Job(job, pipeline: pipeline)
   }
@@ -20,13 +30,17 @@ class JobFactory {
     id: Int,
     name: String,
     paused: Bool,
+    teamName: String,
+    pipelineName: String,
     finishedBuild: Concourse.Build?,
     nextBuild: Concourse.Build?
   ) -> ConcourseAPI.Job {
 
     var object: [String: Any] = [
       "id": id,
-      "name": name
+      "name": name,
+      "team_name": teamName,
+      "pipeline_name": pipelineName,
     ]
 
     if paused {

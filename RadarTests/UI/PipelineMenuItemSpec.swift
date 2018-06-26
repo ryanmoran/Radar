@@ -13,7 +13,7 @@ class PipelineMenuItemSpec: QuickSpec {
       var pipeline = PipelineFactory.newPipeline(id: 1, name: "some-pipeline", target: target, groups: [])
       target.pipelines.append(pipeline)
 
-      let job = JobFactory.newJob(id: 1, name: "some-job", finishedBuild: nil, nextBuild: nil, pipeline: pipeline)
+      let job = JobFactory.newJob(id: 1, name: "some-job", teamName: target.team, pipelineName: pipeline.name, finishedBuild: nil, nextBuild: nil, pipeline: pipeline)
       pipeline.jobs.append(job)
 
       workspace = FakeWorkspace()

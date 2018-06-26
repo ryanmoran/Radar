@@ -11,6 +11,8 @@ class JobSpec: QuickSpec {
             "id": 1,
             "name": "some-name",
             "paused": false,
+            "team_name": "some-team",
+            "pipeline_name": "some-pipeline",
             "next_build": {
               "id": 2,
               "name": "next-build-name",
@@ -38,6 +40,8 @@ class JobSpec: QuickSpec {
         expect(job.id).to(equal(1))
         expect(job.name).to(equal("some-name"))
         expect(job.paused).to(equal(false))
+        expect(job.teamName).to(equal("some-team"))
+        expect(job.pipelineName).to(equal("some-pipeline"))
 
         expect(job.nextBuild?.id).to(equal(2))
         expect(job.nextBuild?.name).to(equal("next-build-name"))

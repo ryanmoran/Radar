@@ -5,12 +5,14 @@ class JobFactory {
   class func newJob(
     id: Int,
     name: String,
+    teamName: String,
+    pipelineName: String,
     finishedBuild: Concourse.Build?,
     nextBuild: Concourse.Build?,
     pipeline: Concourse.Pipeline
   ) -> Concourse.Job {
 
-    let job = newAPIJob(id: id, name: name, finishedBuild: finishedBuild, nextBuild: nextBuild)
+    let job = newAPIJob(id: id, name: name, teamName: teamName, pipelineName: pipelineName, finishedBuild: finishedBuild, nextBuild: nextBuild)
 
     return Concourse.Job(job, pipeline: pipeline)
   }
@@ -18,13 +20,17 @@ class JobFactory {
   class func newAPIJob(
     id: Int,
     name: String,
+    teamName: String,
+    pipelineName: String,
     finishedBuild: Concourse.Build?,
     nextBuild: Concourse.Build?
   ) -> ConcourseAPI.Job {
 
     var object: [String: Any] = [
       "id": id,
-      "name": name
+      "name": name,
+      "team_name": teamName,
+      "pipeline_name": pipelineName,
     ]
 
     if let build = finishedBuild {

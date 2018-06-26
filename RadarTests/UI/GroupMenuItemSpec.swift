@@ -11,7 +11,7 @@ class GroupMenuItemSpec: QuickSpec {
       let target = TargetFactory.newTarget(api: "some-api", team: "some-team")
       var pipeline = PipelineFactory.newPipeline(id: 1, name: "some-pipeline", target: target, groups: [])
 
-      let job = JobFactory.newJob(id: 1, name: "some-job", finishedBuild: nil, nextBuild: nil, pipeline: pipeline)
+      let job = JobFactory.newJob(id: 1, name: "some-job", teamName: target.team, pipelineName: pipeline.name, finishedBuild: nil, nextBuild: nil, pipeline: pipeline)
       let group = GroupFactory.newGroup(name: "some-group", jobs: [job], pipeline: pipeline)
       pipeline.jobs.append(job)
 
