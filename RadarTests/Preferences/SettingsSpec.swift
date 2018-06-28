@@ -22,15 +22,15 @@ class SettingsSpec: QuickSpec {
           <array>
             <dict>
               <key>api</key>
-              <string>some-api</string>
+              <string>first-default-api</string>
               <key>team</key>
-              <string>some-team</string>
+              <string>first-default-team</string>
             </dict>
             <dict>
               <key>api</key>
-              <string>other-api</string>
+              <string>second-default-api</string>
               <key>team</key>
-              <string>other-team</string>
+              <string>second-default-team</string>
             </dict>
           </array>
         </dict>
@@ -59,22 +59,49 @@ class SettingsSpec: QuickSpec {
       expect(targets).to(haveCount(2))
 
       let firstTarget = targets[0]
-      expect(firstTarget["api"]).to(equal("some-api"))
-      expect(firstTarget["team"]).to(equal("some-team"))
+      expect(firstTarget["api"]).to(equal("first-default-api"))
+      expect(firstTarget["team"]).to(equal("first-default-team"))
 
       let secondTarget = targets[1]
-      expect(secondTarget["api"]).to(equal("other-api"))
-      expect(secondTarget["team"]).to(equal("other-team"))
+      expect(secondTarget["api"]).to(equal("second-default-api"))
+      expect(secondTarget["team"]).to(equal("second-default-team"))
     }
 
     it("pulls its data from the defaults") {
       defaults.arrayCall.returns.array = [
-        ["api": "new-api", "team": "new-team"]
+        [
+          "api": "first-api",
+          "team": "first-team"
+        ],
+        [
+          "api": "second-api",
+          "team": "second-team"
+        ]
       ]
 
-      expect(settings.targets).to(haveCount(1))
+      expect(settings.targets).to(haveCount(2))
       expect(settings.targets).to(containElementSatisfying({ target in
-        return target.api == "new-api" && target.team == "new-team"
+        return target.api == "first-api" && target.team == "first-team"
+      }))
+      expect(settings.targets).to(containElementSatisfying({ target in
+        return target.api == "second-api" && target.team == "second-team"
+      }))
+    }
+
+    it("updates the list of targets") {
+      settings.targets = [
+        Settings.Target(api: "first-updated-api", team: "first-updated-team"),
+        Settings.Target(api: "second-updated-api", team: "second-updated-team")
+      ]
+
+      expect(defaults.setCall.receives.key).to(equal("targets"))
+
+      let targets = defaults.setCall.receives.value as! [[String: String]]
+      expect(targets).to(containElementSatisfying({ target in
+        return target["api"] == "first-updated-api" && target["team"] == "first-updated-team"
+      }))
+      expect(targets).to(containElementSatisfying({ target in
+        return target["api"] == "second-updated-api" && target["team"] == "second-updated-team"
       }))
     }
   }

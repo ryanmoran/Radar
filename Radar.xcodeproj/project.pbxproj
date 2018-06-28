@@ -20,6 +20,9 @@
 		3A63C7691FEAE81900A64CEA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A63C7681FEAE81900A64CEA /* MainMenu.xib */; };
 		3A63C76B1FEAF2BC00A64CEA /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A63C76A1FEAF2BC00A64CEA /* MenuController.swift */; };
 		3A7688AF20B4FFFC000413BF /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7688AE20B4FFFC000413BF /* Logger.swift */; };
+		3A80020320E3F9740026652D /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A80020220E3F9740026652D /* PreferencesController.swift */; };
+		3A80020520E4343F0026652D /* TargetsScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A80020420E4343F0026652D /* TargetsScrollViewController.swift */; };
+		3A80020720E43F0A0026652D /* TargetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A80020620E43F0A0026652D /* TargetsTableViewController.swift */; };
 		3A88416B202158AB008B41B4 /* Concourse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8841562021569F008B41B4 /* Concourse.framework */; };
 		3A88416C202158AB008B41B4 /* Concourse.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8841562021569F008B41B4 /* Concourse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A941BA6202566BF003AC53A /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A941BA5202566BF003AC53A /* DefaultPreferences.plist */; };
@@ -257,6 +260,9 @@
 		3A63C7681FEAE81900A64CEA /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		3A63C76A1FEAF2BC00A64CEA /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		3A7688AE20B4FFFC000413BF /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		3A80020220E3F9740026652D /* PreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
+		3A80020420E4343F0026652D /* TargetsScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetsScrollViewController.swift; sourceTree = "<group>"; };
+		3A80020620E43F0A0026652D /* TargetsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetsTableViewController.swift; sourceTree = "<group>"; };
 		3A8841502021569E008B41B4 /* Concourse.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Concourse.xcodeproj; path = Concourse/Concourse.xcodeproj; sourceTree = "<group>"; };
 		3A941BA5202566BF003AC53A /* DefaultPreferences.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
 		3A941BA720256D1F003AC53A /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -324,6 +330,37 @@
 				3A3FE00D203A9DF6008EC5FD /* TargetFactory.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3A8001EA20E3F93E0026652D /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				3AD2CDFE20390B40009BB9B9 /* GroupMenuItem.swift */,
+				3AD2CDFC20390593009BB9B9 /* JobMenuItem.swift */,
+				3A63C76A1FEAF2BC00A64CEA /* MenuController.swift */,
+				3AD2CE0020390DD9009BB9B9 /* PipelineMenuItem.swift */,
+				3A2FA71F203E1DD000D46DC7 /* TargetMenuItem.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		3A80020120E3F9530026652D /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				3A80020220E3F9740026652D /* PreferencesController.swift */,
+				3A941BA720256D1F003AC53A /* Settings.swift */,
+				3A80020420E4343F0026652D /* TargetsScrollViewController.swift */,
+				3A80020620E43F0A0026652D /* TargetsTableViewController.swift */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		3A80020820E457830026652D /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				3A941BA920256D43003AC53A /* SettingsSpec.swift */,
+			);
+			path = Preferences;
 			sourceTree = "<group>";
 		};
 		3A8841512021569E008B41B4 /* Products */ = {
@@ -395,11 +432,8 @@
 		3AD2CDF820390294009BB9B9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				3AD2CDFE20390B40009BB9B9 /* GroupMenuItem.swift */,
-				3AD2CDFC20390593009BB9B9 /* JobMenuItem.swift */,
-				3A63C76A1FEAF2BC00A64CEA /* MenuController.swift */,
-				3AD2CE0020390DD9009BB9B9 /* PipelineMenuItem.swift */,
-				3A2FA71F203E1DD000D46DC7 /* TargetMenuItem.swift */,
+				3A8001EA20E3F93E0026652D /* Menu */,
+				3A80020120E3F9530026652D /* Preferences */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -445,7 +479,6 @@
 			children = (
 				3AE260331FEAD937008DD8E1 /* AppDelegate.swift */,
 				3A7688AE20B4FFFC000413BF /* Logger.swift */,
-				3A941BA720256D1F003AC53A /* Settings.swift */,
 				3AED98AB20407865006CF411 /* Extensions */,
 				3AD2CDF820390294009BB9B9 /* UI */,
 				3AE260351FEAD937008DD8E1 /* Assets.xcassets */,
@@ -460,7 +493,7 @@
 		3AE260431FEAD937008DD8E1 /* RadarTests */ = {
 			isa = PBXGroup;
 			children = (
-				3A941BA920256D43003AC53A /* SettingsSpec.swift */,
+				3A80020820E457830026652D /* Preferences */,
 				3AD2CDFA203904E6009BB9B9 /* UI */,
 				3A941BC220278BD5003AC53A /* Fakes */,
 				3A3FE004203A0674008EC5FD /* Helpers */,
@@ -816,8 +849,11 @@
 				3AD2CDFD20390593009BB9B9 /* JobMenuItem.swift in Sources */,
 				3A7688AF20B4FFFC000413BF /* Logger.swift in Sources */,
 				3AED98B320407941006CF411 /* UserDefaults.swift in Sources */,
+				3A80020520E4343F0026652D /* TargetsScrollViewController.swift in Sources */,
 				3AD2CE0120390DD9009BB9B9 /* PipelineMenuItem.swift in Sources */,
 				3A941BA820256D1F003AC53A /* Settings.swift in Sources */,
+				3A80020320E3F9740026652D /* PreferencesController.swift in Sources */,
+				3A80020720E43F0A0026652D /* TargetsTableViewController.swift in Sources */,
 				3AED98B1204078DE006CF411 /* NSWorkspace.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

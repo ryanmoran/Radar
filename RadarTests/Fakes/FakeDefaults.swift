@@ -4,6 +4,7 @@ import Foundation
 class FakeDefaults {
   var registerCall = RegisterCall()
   var arrayCall = ArrayCall()
+  var setCall = SetCall()
 
   struct RegisterCall {
     var receives = Receives()
@@ -25,6 +26,15 @@ class FakeDefaults {
       var array: [Any]?
     }
   }
+
+  struct SetCall {
+    var receives = Receives()
+
+    struct Receives {
+      var value: Any?
+      var key: String?
+    }
+  }
 }
 
 extension FakeDefaults: Defaults {
@@ -36,5 +46,10 @@ extension FakeDefaults: Defaults {
     arrayCall.receives.key = defaultName
 
     return arrayCall.returns.array
+  }
+
+  func set(_ value: Any?, forKey defaultName: String) {
+    setCall.receives.value = value
+    setCall.receives.key = defaultName
   }
 }

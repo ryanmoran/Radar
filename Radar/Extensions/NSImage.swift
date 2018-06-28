@@ -38,6 +38,20 @@ public extension NSImage {
 
 // MARK: - NSImage.init(status: String)
 extension NSImage {
+  static var statusImages: [String: NSImage] = [:]
+
+  static func forStatus(status: String, transientStatus: String) -> NSImage {
+    let key = "\(status)-\(transientStatus)"
+    if let image = statusImages[key] {
+      return image
+    }
+
+    let image = NSImage(status: status, transientStatus: transientStatus)
+    statusImages[key] = image
+
+    return image
+  }
+
   convenience init(status: String, transientStatus: String) {
     self.init(size: NSMakeSize(16, 16), flipped: false, drawingHandler: { bounds in
       guard let context = NSGraphicsContext.current?.cgContext else { return false }

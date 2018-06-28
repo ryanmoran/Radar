@@ -30,7 +30,8 @@ extension AppDelegate: NSApplicationDelegate {
 
     stateManager = Concourse.StateManager(logger: logger, targets: targets, pipelinesService: pipelinesService, jobsService: jobsService)
 
-    menuController = MenuController(workspace: NSWorkspace.shared)
+    let preferencesController = PreferencesController(settings: settings)
+    menuController = MenuController(workspace: NSWorkspace.shared, preferences: preferencesController)
     stateManager.delegates.append(menuController)
 
     menuController.load()

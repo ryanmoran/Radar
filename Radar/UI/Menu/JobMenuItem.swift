@@ -12,7 +12,7 @@ class JobMenuItem: NSMenuItem {
     super.init(title: job.name, action: #selector(handleClick(_:)), keyEquivalent: "")
     self.target = self
     self.toolTip = "The state of the \(job.name) job in the \(job.pipeline.name) pipeline is \"\(job.status)\""
-    self.image = NSImage(status: job.status, transientStatus: job.transientStatus)
+    self.image = NSImage.forStatus(status: job.status, transientStatus: job.transientStatus)
   }
 
   required init(coder decoder: NSCoder) {

@@ -9,9 +9,11 @@ class MenuController: NSObject {
   var canUpdateMenu = true
   var timer: Timer!
   var workspace: Workspace
+  var preferences: PreferencesController
 
-  init(workspace: Workspace) {
+  init(workspace: Workspace, preferences: PreferencesController) {
     self.workspace = workspace
+    self.preferences = preferences
 
     super.init()
 
@@ -23,7 +25,9 @@ class MenuController: NSObject {
     if let menu = statusItem.menu {
       menu.addItem(NSMenuItem(title:"Loading...", action: nil, keyEquivalent: ""))
       menu.addItem(NSMenuItem.separator())
-      menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+//      menu.addItem(self.preferencesMenuItem())
+//      menu.addItem(NSMenuItem.separator())
+      menu.addItem(self.quitMenuItem())
     }
   }
 
@@ -45,6 +49,16 @@ class MenuController: NSObject {
       button.image = image.rotatedBy(degrees: CGFloat(360.0 - offset))
     }
   }
+
+  func preferencesMenuItem() -> NSMenuItem {
+    let menuItem = NSMenuItem(title: "Preferences...", action: #selector(PreferencesController.showWindow(_:)), keyEquivalent: "")
+    menuItem.target = self.preferences
+    return menuItem
+  }
+
+  func quitMenuItem() -> NSMenuItem {
+    return NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+  }
 }
 
 extension MenuController: Concourse.StateManagerDelegate {
@@ -55,6 +69,8 @@ extension MenuController: Concourse.StateManagerDelegate {
 
     guard let menu = statusItem.menu else { return }
     menu.removeAllItems()
+//    menu.addItem(self.preferencesMenuItem())
+//    menu.addItem(NSMenuItem.separator())
 
     for target in state.targets {
       menu.addItem(TargetMenuItem(target))
@@ -63,7 +79,8 @@ extension MenuController: Concourse.StateManagerDelegate {
       }
       menu.addItem(NSMenuItem.separator())
     }
-    menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+
+    menu.addItem(self.quitMenuItem())
   }
 }
 
