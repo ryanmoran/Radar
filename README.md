@@ -10,3 +10,8 @@ applications come from. In order to run `Radar`, you might need
 to allow applications to be run from "Anywhere". To do this,
 check out this
 [article](http://osxdaily.com/2016/09/27/allow-apps-from-anywhere-macos-gatekeeper/).
+
+To configure Radar to a Concourse instance, run the following
+in Terminal:
+
+`defaults write com.banana.Radar '{ targets = ( { api = "<YOUR-CONCOURSE-URL-HERE>"; team = main; } ); }'`
